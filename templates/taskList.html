@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        h2 {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+        }
+        #taskDetails {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        #taskDetails table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #taskDetails th, #taskDetails td {
+            padding: 10px;
+            text-align: left;
+        }
+        #taskDetails th {
+            width: 20%;
+            background-color: #e9ecef;
+            font-weight: bold;
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in taskId %}
+                <tr onclick="showTaskDetails({{ task.id }})">
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.title }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Task Details</h2>
+        <div id="taskDetails">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <td id="taskDetailId"></td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td id="taskDetailTitle"></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td id="taskDetailDescription"></td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td id="taskDetailStatus"></td>
+                </tr>
+                <tr>
+                    <th>Members</th>
+                    <td id="taskDetailMembers"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function showTaskDetails(taskId) {
+            const tasks = {{ taskId|safe }};
+            const task = tasks.find(t => t.id === taskId);
+
+            if (task) {
+                document.getElementById('taskDetailId').textContent = task.id;
+                document.getElementById('taskDetailTitle').textContent = task.title;
+                document.getElementById('taskDetailDescription').textContent = task.description || 'No description';
+                document.getElementById('taskDetailStatus').textContent = task.status || 'No status';
+                document.getElementById('taskDetailMembers').textContent = task.members.join(', ') || 'No members';
+                document.getElementById('taskDetails').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

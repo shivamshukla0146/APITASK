@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box with Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            width: 600px; /* Increased width of the box */
+            height: 500px; /* Increased height of the box */
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .box-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        a.button, button {
+            flex: 1;
+            padding: 15px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            margin: 0 5px;
+            display: inline-block;
+        }
+        a.button {
+            background-color: #007bff; /* Default color for all buttons */
+        }
+        a.button:hover {
+            background-color: #0056b3; /* Hover color */
+        }
+        .btn-1 { background-color: #007bff; }
+        .btn-1:hover { background-color: #0056b3; }
+        .btn-2 { background-color: #28a745; }
+        .btn-2:hover { background-color: #218838; }
+        .btn-3 { background-color: #dc3545; }
+        .btn-3:hover { background-color: #c82333; }
+        .btn-4 { background-color: #ffc107; }
+        .btn-4:hover { background-color: #e0a800; }
+        .btn-5 { background-color: #6c757d; }
+        .btn-5:hover { background-color: #5a6268; }
+        button:disabled, .button.disabled {
+            background-color: #ffffff;
+            cursor: not-allowed;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+        <div class="box-content">
+            <P>Welcome!</P>
+        </div>
+        <div class="button-container">
+            <a class="button btn-1" href="{{baseurl}}register/">Registration</a>
+            <button  disabled></button>
+            <a class="button btn-1" href="{{baseurl}}tasks/">Create Task</a>
+            <button  disabled></button>
+            <a class="button btn-1" href="{{baseurl}}tasks/list/">Task List</a>
+        </div>
+        <div class="button-container">
+            <button  disabled></button>
+            <button  disabled></button>
+            <button  disabled></button>
+            <button  disabled></button>
+            <button  disabled></button>
+        </div>
+        <div class="button-container">
+            <a class="button btn-2" href="{{baseurl}}tasks/manage-members/">Manage Member & Task</a>
+            <button  disabled></button>
+            <a class="button btn-3" href="{{baseurl}}logout">Logout</a>
+            <button  disabled></button>
+            <button  disabled></button>
+        </div>
+        <div class="button-container">
+            <button  disabled></button>
+            <button  disabled></button>
+            <button  disabled></button>
+            <button  disabled></button>
+            <button  disabled></button>
+        </div>
+        <div class="button-container">
+            <button  disabled></button>
+            <button  disabled></button>
+            <button  disabled></button>
+            <button  disabled></button>
+            <button  disabled></button>
+        </div>
+       
+    </div>
+
+</body>
+</html>
