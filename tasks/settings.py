@@ -30,7 +30,8 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-BASE_URL = 'http://127.0.0.1:8000/'
+#BASE_URL = 'http://127.0.0.1:8000/'
+BASE_URL ='https://github.com/shivamshukla0146/APITASK'
 
 INSTALLED_APPS = [
     'task_app',
